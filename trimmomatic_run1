@@ -1,0 +1,25 @@
+#!/bin/bash
+#SBATCH --job-name=RNAtrim1 --output=z01.%x
+#SBATCH --mail-type=END,FAIL --mail-user=gho7@georgetown.edu
+#SBATCH --nodes=1 --ntasks=1 --cpus-per-task=1 --time=72:00:00
+#SBATCH --mem=4G
+
+# set environment, load module
+shopt -s expand_aliases
+module load trimmomatic
+
+# run trimmomatic
+
+trimmomatic PE \
+WTA2_1.fq \
+WTA2_2.fq \
+output_R1_trPE.fq output_R1_trSE.fq \
+output_R2_trPE.fq output_R2_trSE.fq \
+ILLUMINACLIP:/home/gho7/TruSeq3-PE.fa:2:30:10 \
+HEADCROP:10 \
+TRAILING:10 \
+SLIDINGWINDOW:4:15 \
+MINLEN:75 
+
+# unload trimmomatic
+module unload trimmomatic
