@@ -1,1 +1,2 @@
 # RNAseqProject
+# read me file
