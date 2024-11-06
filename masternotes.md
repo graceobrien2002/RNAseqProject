@@ -1,4 +1,4 @@
-#new file for RNAseq
+new file for RNAseq
 #notes for each step
 #link to scripts
 #describe output on masternotes 
