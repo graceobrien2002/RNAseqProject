@@ -3,7 +3,7 @@
 ### Data Accession 
 Data for Candida Albicans was obtained using GTF and FNA files from NCBI's genome database. The link to access these datasets is [here](https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000182965.3/) .
 Before cleaning, FastQC was performed on forward and reverse reads to use later as comparison of how effective cleaning was. For reference here are the FastQC reads before cleaning was performed: [Forward read](file:///Users/graceobrien/Downloads/WTA2_1_fastqc.html) [Reverse read](file:///Users/graceobrien/Downloads/WTA2_2_fastqc.html) .
-### Preprocessing and Quality Control
+### Preprocessing and Quality Control 
 All preprocessing and quality control was performed on SSH key of google cloud grapes controller. Trimmomatic (version 0.39) was used to trim reads based on quality. 
 Trimmomatic script: [linked here](https://github.com/graceobrien2002/RNAseqProject/blob/main/scripts1/trimmomatic_run1) .
 We removed specific [adapters sequences](https://github.com/graceobrien2002/RNAseqProject/blob/main/scripts1/TruSeq3-PE_adapter_sequence) for Illumina. We used trimmomatic filters of:
