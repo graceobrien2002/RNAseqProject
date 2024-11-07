@@ -15,15 +15,15 @@ SLIDINGWINDOW:4:15 to improve data quality. This scans over 4 bases at a time, a
 MINLEN:75 to ensure that only reads with at least 75 bases are kept after trimming.
 FastQC (version 0.12.0) was then performed on the forward and reverse trimmed paired-end reads to visualize the quality control of data.
 Output for [forward paired ends trimmomatic read](https://www.dropbox.com/scl/fi/rzh0t2qiaelko2gv9n4ik/output_R1_trPE_fastqc.html?rlkey=gij3a5ajcvy38s1kumq2lexzm&st=ru98zeuk&dl=0). Output for [reverse paired ends trimmomatic read](https://www.dropbox.com/scl/fi/ids13arvlixc2rd8ohebt/output_R2_trPE_fastqc.html?rlkey=yma67idaneljhaotspfmzyw33&st=uo0bpm9m&dl=0).
-DESCRIBE FINDINGS HERE.
-### Sequence Mapping
-Bowtie2 (version 2.5.3) was used on forward and reverse paired-end reads obtained from trimmomatic to map the data to reference sequence. [Reference sequence](https://api.ncbi.nlm.nih.gov/datasets/v2/genome/accession/GCF_000182965.3/download?include_annotation_type=GENOME_FASTA&include_annotation_type=GENOME_GFF&include_annotation_type=RNA_FASTA&include_annotation_type=CDS_FASTA&include_annotation_type=PROT_FASTA&include_annotation_type=SEQUENCE_REPORT&hydrated=FULLY_HYDRATED) GCF_000182965.3 for SC5314 genome assembly was obtained from NCBI genome datasets. 
+Prior to cleaning, per-base sequence content and sequence duplication levels were flagged as concerning by fastQC. Per base sequence quality and per sequence GC content were also flagged as possibly concerning. 
+After running trimmomatic, all of these areas were improved except for sequence duplication. It is important to note that sequence duplication may represent highly expressed transcripts, and de-duplicating may skew the relative proportions of transcripts and thus impact interpretations. For RNAseq reads, it is the standard to not de-duplicate while cleaning reads. Also, adapter contamination was eliminated during cleaning with trimmomatic. 
+Bowtie2 (version 2.5.3) was used on forward and reverse paired-end reads obtained from trimmomatic to align the data to a reference 'de novo' sequence. [Reference sequence](https://api.ncbi.nlm.nih.gov/datasets/v2/genome/accession/GCF_000182965.3/download?include_annotation_type=GENOME_FASTA&include_annotation_type=GENOME_GFF&include_annotation_type=RNA_FASTA&include_annotation_type=CDS_FASTA&include_annotation_type=PROT_FASTA&include_annotation_type=SEQUENCE_REPORT&hydrated=FULLY_HYDRATED) GCF_000182965.3 for SC5314 genome assembly was obtained from NCBI genome datasets. 
 [Bowtie 2 script](https://github.com/graceobrien2002/RNAseqProject/blob/e8db7edae80fbf20142463c10ea4e06051486a41/scripts1/bowtie_script) used the forward and reverse trimmomatic-cleaned reads as input, with the output being a .sam file. 
-DESCRIBE FINDINGS HERE. LINK OUTPUT HERE.
+LINK HTML OUTPUT HERE. DESCRIBE FINDINGS HERE. 
 
 ### Counting Reads per Gene Model
-Using HTseq (VERSION)
+Using HTseq (VERSION).
 
 ## Downstream workflow
-All downstream analyses done in R (VERSION)
+All downstream analyses done in R (VERSION).
 Using DESeq2 (VERSION) LINK SCRIPT HERE.
