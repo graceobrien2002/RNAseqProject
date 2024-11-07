@@ -1,0 +1,22 @@
+#!/bin/bash
+#SBATCH --job-name=RNAtrim1 --output=z01.%x
+#SBATCH --mail-type=END,FAIL --mail-user=gho7@georgetown.edu
+#SBATCH --nodes=1 --ntasks=1 --cpus-per-task=1 --time=72:00:00
+#SBATCH --mem=4G
+
+# define variables 
+input_forward_PE=/home/gho7/output_R1_trPE.fq
+input_reverse_PE=/home/gho7/output_R2_trPE.fq
+output=/home/gho7/WTA2.sam
+
+# set environment, load module
+module load bowtie2/2.5.3
+
+# run bowtie2
+$ bowtie2 -x reference_genome_index \
+-1 $input_forward_PE \
+-2 $input_reverse_PE \
+-S $output
+
+# unload bowtie2
+module unload bowtie2/2.5.3
