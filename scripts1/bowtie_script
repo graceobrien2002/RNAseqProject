@@ -13,10 +13,11 @@ output=/home/gho7/WTA2.sam
 module load bowtie2/2.5.3
 
 # run bowtie2
-$ bowtie2 -x reference_genome_index \
+bowtie2 -x reference_genome_index \
 -1 $input_forward_PE \
 -2 $input_reverse_PE \
 -S $output
 
 # unload bowtie2
 module unload bowtie2/2.5.3
+module load bcftools/1.20 samtools/1.20
