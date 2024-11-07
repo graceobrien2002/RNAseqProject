@@ -2,7 +2,8 @@
 ## Upstream workflow
 ### Data Accession 
 Data for Candida Albicans was obtained using GTF and FNA files from NCBI's genome database. The link to access these datasets is [here](https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000182965.3/) .
-Before cleaning, FastQC was performed on forward and reverse reads to use later as comparison of how effective cleaning was. For reference here are the FastQC reads before cleaning was performed: [Forward read](https://www.dropbox.com/scl/fi/9h4zneet703n2zmz2ndh8/WTA2_1_fastqc-1.html?rlkey=954we5578wmit1ganxf5a49gj&st=m9u4tygp&dl=0) [Reverse read](https://www.dropbox.com/scl/fi/rr2k5qlw67rpk8niwkgmb/WTA2_2_fastqc-1.html?rlkey=288ugauug8pjvu510f5zumrgs&st=yveofmbb&dl=0) .
+Before cleaning, FastQC was performed on forward and reverse reads to use later as comparison of how effective cleaning was. For reference here are the FastQC reads before cleaning was performed: [Forward read](https://www.dropbox.com/scl/fi/9h4zneet703n2zmz2ndh8/WTA2_1_fastqc-1.html?rlkey=954we5578wmit1ganxf5a49gj&st=m9u4tygp&dl=0) 
+[Reverse read](https://www.dropbox.com/scl/fi/rr2k5qlw67rpk8niwkgmb/WTA2_2_fastqc-1.html?rlkey=288ugauug8pjvu510f5zumrgs&st=yveofmbb&dl=0) .
 ### Preprocessing and Quality Control 
 All preprocessing and quality control was performed on SSH key of google cloud grapes controller. Trimmomatic (version 0.39) was used to trim reads based on quality. 
 Trimmomatic script: [linked here](https://github.com/graceobrien2002/RNAseqProject/blob/main/scripts1/trimmomatic_run1) .
