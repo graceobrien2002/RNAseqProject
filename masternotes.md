@@ -40,7 +40,7 @@ LINK HTML OUTPUT HERE. DESCRIBE FINDINGS HERE.
 Once the .SAM file was generated from Bowtie2, it was converted into a .BAM file and further processed using Samtools (version 1.17). These steps were necessary to ensure the file was ready for downstream analysis. The .SAM file was converted to a .BAM file using the command: Samtools view -S -b WTA2.sam > WTA2.bam on the HPC terminal. The resulting .BAM file was sorted to arrange the genes by their genomic coordinates using the command: Samtools sort WTA2.bam -o sorted_reads.bam. An index file was created using the command: Samtools index sample.srt.bam. 
 
 ### Counting Reads per Gene Model using HTSeq
-Using HTseq (version 2.0.3), the reads were quantified and analyzed by assigning aligned reads from the .bam to annotated genes from the .gtf file. The SBATCH script used for HTSeq is linked [here](). 
+Using HTseq (version 2.0.3), the reads were quantified and analyzed by assigning aligned reads from the .bam to annotated genes from the .gtf file. The SBATCH script used for HTSeq is linked [here](https://github.com/graceobrien2002/RNAseqProject/blob/main/scripts1/SBATCH_HTSeq). 
 
 ## Downstream workflow
 All downstream analyses done in R (VERSION).
