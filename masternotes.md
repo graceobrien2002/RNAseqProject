@@ -30,10 +30,7 @@ Output for [forward paired ends trimmomatic read](https://www.dropbox.com/scl/fi
 | File name | # pre cleaned reads | # post cleaned reads | % retained after cleaning | pre-cleaning per-base sequence quality | post-cleaning per-base sequence quality | pre-cleaning per-base sequence content | post-cleaning per-base sequence content | pre-cleaning sequence duplication | post-cleaning sequence duplication | post-cleaning adapter contamination | 
 | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
 WTA2_1.fq.gz | 21,972,519 | 21,972,519 | 0.9574566303 | B | G | B | B | None | 
-| ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
 WTA2_2.fq.gz | 21,972,519 | 21,972,519 | 0.9574566303 | B | G | B | B | None | 
-| ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
-
 #### Interpretations of Trimmomatic outputs
 Prior to cleaning, per-base sequence content and sequence duplication levels were flagged as concerning by FastQC. Per base sequence quality and per sequence GC content were also flagged as possibly concerning. 
 After running Trimmomatic, all of these areas were improved except for sequence duplication. It is important to note that sequence duplication may represent highly expressed transcripts, and de-duplicating may skew the relative proportions of transcripts and thus impact interpretations. For RNAseq reads, it is the standard to not de-duplicate while cleaning reads. Also, adapter contamination was eliminated during cleaning with Trimmomatic. You can find a [master Google sheet](https://docs.google.com/spreadsheets/d/1AOa-XaTzR_PKMIRQDmu8oDTmawXXnkIwEjKOQkNC7Vs/edit?gid=0#gid=0) that includes details of the number of reads per library. Most strains retained about 95% of genomic data after cleaning. 
