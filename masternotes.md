@@ -8,7 +8,7 @@ The absence of thiamine in _Candida Albicans_ growth environment induces differe
 
 ## Upstream workflow
 ### Data Accession 
-Data for _Candida Albicans_ was obtained using GTF and FNA files from NCBI's genome database. The link to access these datasets is [here](https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000182965.3/) . The .fna file is linked [here](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/182/965/GCF_000182965.3_ASM18296v3/GCF_000182965.3_ASM18296v3_cds_from_genomic.fna.gz). The .gtf file is linked [here](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/182/965/GCF_000182965.3_ASM18296v3/GCF_000182965.3_ASM18296v3_genomic.gtf.gz). 
+Genomic data for _Candida Albicans_ grown in the presence and absence of thiamine was obtained using GTF and FNA files from NCBI's genome database. The link to access these datasets is [here](https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000182965.3/) . The .fna file is linked [here](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/182/965/GCF_000182965.3_ASM18296v3/GCF_000182965.3_ASM18296v3_cds_from_genomic.fna.gz). The .gtf file is linked [here](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/182/965/GCF_000182965.3_ASM18296v3/GCF_000182965.3_ASM18296v3_genomic.gtf.gz). 
 Before cleaning, FastQC was performed on forward and reverse reads to use later as comparison of how effective cleaning was. For reference here are the FastQC reads before cleaning was performed: [Forward read](https://www.dropbox.com/scl/fi/9h4zneet703n2zmz2ndh8/WTA2_1_fastqc-1.html?rlkey=954we5578wmit1ganxf5a49gj&st=m9u4tygp&dl=0) ...
 [Reverse read](https://www.dropbox.com/scl/fi/rr2k5qlw67rpk8niwkgmb/WTA2_2_fastqc-1.html?rlkey=288ugauug8pjvu510f5zumrgs&st=yveofmbb&dl=0) .
 ### Preprocessing and Quality Control 
@@ -26,6 +26,13 @@ We removed specific [adapters sequences](https://github.com/graceobrien2002/RNAs
 
 FastQC (version 0.12.0) was then performed on the forward and reverse trimmed paired-end reads to visualize the quality control of data.
 Output for [forward paired ends trimmomatic read](https://www.dropbox.com/scl/fi/rzh0t2qiaelko2gv9n4ik/output_R1_trPE_fastqc.html?rlkey=gij3a5ajcvy38s1kumq2lexzm&st=ru98zeuk&dl=0). Output for [reverse paired ends trimmomatic read](https://www.dropbox.com/scl/fi/ids13arvlixc2rd8ohebt/output_R2_trPE_fastqc.html?rlkey=yma67idaneljhaotspfmzyw33&st=uo0bpm9m&dl=0).
+
+| File name | # pre cleaned reads | # post cleaned reads | % retained after cleaning | pre-cleaning per-base sequence quality | post-cleaning per-base sequence quality | pre-cleaning per-base sequence content | post-cleaning per-base sequence content | pre-cleaning sequence duplication | post-cleaning sequence duplication | post-cleaning adapter contamination | 
+| ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
+WTA2_1.fq.gz | 21,972,519 | 21,972,519 | 0.9574566303 | B | G | B | B | None | 
+| ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
+WTA2_2.fq.gz | 21,972,519 | 21,972,519 | 0.9574566303 | B | G | B | B | None | 
+| ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
 
 #### Interpretations of Trimmomatic outputs
 Prior to cleaning, per-base sequence content and sequence duplication levels were flagged as concerning by FastQC. Per base sequence quality and per sequence GC content were also flagged as possibly concerning. 
