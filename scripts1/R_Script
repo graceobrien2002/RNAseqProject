@@ -1,6 +1,43 @@
+
+########################## Installations ###########################
+if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")
+BiocManager::install("DESeq2")
+BiocManager::install('EnhancedVolcano')
+BiocManager::install("apeglm")
+BiocManager::install("GOplot")
+BiocManager::install("mygene")
+install.packages("RColorBrewer")
+install.packages("ggolot2")
+install.packages("tidyverse")
+install.packages("pheatmap")
+install.packages("reshape2")
+install.packages("viridis")
+install.packages("ggthemes")
+install.packages("VennDiagram")
+BiocManager::install("genefilter")
+BiocManager::install("ggrepel")
+
+
+########################## Load Libraries ###########################
+library(DESeq2)
+library(ggplot2)
+library(EnhancedVolcano)
+library(GOplot) 
+library("apeglm")
+library(mygene)
+library(tidyverse)
+library(pheatmap)
+library(reshape2)
+library(viridis)
+library(RColorBrewer)
+library(DESeq2)
+library(VennDiagram)
+library(genefilter)
+library(ggrepel)
+
 ########################## Input HTSeq data files ###########################
 #Choose directory with htseq-count data
-directory<-("/Users/jackjanuario/Desktop/htseq_counts")
+directory<-("/Users/graceobrien@Graces-MacBook-Air-6/Desktop/htseq_counts")
 #Create the sample table (this could alternatively be made externally and read in)
 sampleFiles <- list.files(directory)
 head(sampleFiles)
@@ -59,7 +96,7 @@ pca_plot <- ggplot(PCA_data, aes(x = PC1, y = PC2, color = condition, position_n
 # geom_text_repel()
 # By default plotPCA() uses the top 500 most variable genes. 
 # You can change this by adding the ntop= argument and specifying how many of the genes you want the function to consider.
-setwd<-("/Users/jackjanuario/Desktop/DEseq2_analysis")
+setwd<-("/Users/graceobrien@Graces-MacBook-Air-6/Desktop/DEseq2_analysis")
 ggsave("TH-vTH+_pcaplot.png",plot=pca_plot,dpi=600,units='in',width=6,height=5)
 pca_plot
 
@@ -81,7 +118,7 @@ head(resOrdered)
 View(resOrdered)
 
 # Write out a table of all genes
-setwd<-("/Users/jackjanuario/Desktop/DEseq2_analysis")
+setwd<-("/Users/graceobrien@Graces-MacBook-Air-6/Desktop/DEseq2_analysis")
 write.csv(resOrdered, 
           file="./calb_TH-_v_TH+_allgenes.csv", row.names = T)
 
@@ -128,5 +165,5 @@ length(unique(sig_res.gene$gene))
 length(sig_res.gene$gene)
 
 # Write out a table of these significant differentially expressed genes
-setwd<-("Users/jackjanuario/Desktop/DEseq2_analysis")
+setwd<-("Users/graceobrien@Graces-MacBook-Air-6/Desktop/DEseq2_analysis")
 write.csv(sig_res.gene, file="./signif_TH-vTH+.csv", row.names = F)
