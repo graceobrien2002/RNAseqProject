@@ -51,6 +51,20 @@ You can find a [master Google sheet](https://docs.google.com/spreadsheets/d/1fa-
 Once the .SAM file was generated from Bowtie2, it was converted into a binary format - .BAM file - and further processed using Samtools (version 1.17). These steps were necessary to ensure the file was ready for downstream analysis. The .SAM file was converted to a .BAM file using the command: Samtools view -S -b WTA2.sam > WTA2.bam on the HPC terminal. The resulting .BAM file was sorted to arrange the genes by their genomic coordinates using the command: Samtools sort WTA2.bam -o sorted_reads.bam. An index file was created using the command: Samtools index sample.srt.bam. 
 
 ### Counting Reads per Gene Model using HTSeq
+A conda environment was set up using the following code: $ module load anaconda3
+
+$ conda create --[name] htseq
+
+$ conda init
+
+(restart shell by logging off HPC, log back on)
+
+$ module load anaconda3
+
+$ conda activate htseq
+
+$ conda install -c bioconda htseq
+
 Using HTseq (version 2.0.3), the reads were quantified and analyzed by assigning aligned reads from the .bam to annotated genes from the .gtf file. The SBATCH script used for HTSeq is linked [here](https://github.com/graceobrien2002/RNAseqProject/blob/main/scripts1/SBATCH_HTSeq). The output HTSeq files for all of the strains of _C. Albicans_ is linked [here](https://www.dropbox.com/scl/fi/0yr4fqgl82yem36ad4co7/htseq_counts.zip?rlkey=9cgdpvpf38oqnf21xws6r05lq&st=xancdhul&dl=0), which shows the gene counts. 
 
 ## Downstream workflow
@@ -86,4 +100,4 @@ Several genes are induced during Spider biofilm formation, a key survival and ge
 THI4 is upregulated, and its activity as a 'suicide enzyme' emphasizes its importance in addressing DNA damage. Also, DUO1, a component of the Dam1 complex, is upregulated which is critical for chromosome segregation during mitosis. This may indicate a need for increased control of the cell cycle. 
 
 ## Conclusion 
-The upregulation of the 13 identified significant genes during thiamine depletion represent a coordinate response of _C. Albicans_ to metabolic stress. _C. Albicans_, by modifying its gene expression, can respond to environmental stressors such as the absence of thiamine, and promote survival, biofilm formation, and virulence. These insights can offer potential therapeutic targets for antifungal treatments - disrupting key pathways could impair _C. Albican's_ ability to survive. Further studies should focus on those 4 uncharacterized proteins that are upregulated to determine their specific role in the response to thiamine depletion. 
+The upregulation of the 13 identified significant genes during thiamine depletion represents a coordinated response of _C. Albicans_ to metabolic stress. _C. Albicans_, by modifying its gene expression, can respond to environmental stressors such as the absence of thiamine, and promote survival, biofilm formation, and virulence. These insights can offer potential therapeutic targets for antifungal treatments - disrupting key pathways could impair _C. Albican's_ ability to survive. Further studies should focus on those 4 uncharacterized proteins that are upregulated to determine their specific role in the response to thiamine depletion. Also, exploring the regulatory functions that control the expression of these genes could introduce therapeutic targets for treating _C. Albicans_ infections. 
