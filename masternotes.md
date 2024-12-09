@@ -8,13 +8,32 @@ The absence of thiamine in _Candida Albicans_ growth environment induces differe
 
 ## Upstream workflow
 ### Data Accession 
-Genomic data for _Candida Albicans_ grown in the presence and absence of thiamine was obtained using GTF and FNA files from NCBI's genome database. The link to access these datasets is [here](https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000182965.3/) . The .fna file is linked [here](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/182/965/GCF_000182965.3_ASM18296v3/GCF_000182965.3_ASM18296v3_cds_from_genomic.fna.gz). The .gtf file is linked [here](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/182/965/GCF_000182965.3_ASM18296v3/GCF_000182965.3_ASM18296v3_genomic.gtf.gz). 
+Genetic replicates of _C. Albicans_ were grown in the presence and absence of thiamine in the Rolfes lab at Georgetown University. 12 data files of genomic information were generated: forward and reverse reads of 3 strains grown in the presence of thiamine, and forward and reverse reads of 3 strains grown in the absence of thiamine. 
+The class split up the following files: 
+
+Grown in the presence of thiamine:
+WTA1_1.fq.gz, WTA1_2.fq.gz
+
+WTB1_1.fq.gz, WTB1_2.fq.gz
+
+WTC1_1.fq.gz, WTC1_2.fq.gz
+
+Grown in the absence of thiamine:
+WTA2_1.fq.gz, WTA2_2.fq.gz
+
+WTB2_1.fq.gz, WTB2_2.fq.gz
+
+WTC2_1.fq.gz, WTC2_2.fq.gz
+I performed my analyses on WTA2_1fq.gz, and WTA2_2fq.gz. 
+Genomic reference data for _Candida Albicans_ was obtained using GTF and FNA files from NCBI's genome database. The link to access these datasets is [here](https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000182965.3/) . The .fna file is linked [here](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/182/965/GCF_000182965.3_ASM18296v3/GCF_000182965.3_ASM18296v3_cds_from_genomic.fna.gz). The .gtf file is linked [here](https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/182/965/GCF_000182965.3_ASM18296v3/GCF_000182965.3_ASM18296v3_genomic.gtf.gz). 
 Before cleaning, FastQC was performed on forward and reverse reads to use later as comparison of how effective cleaning was. For reference here are the FastQC reads before cleaning was performed: [Forward read](https://www.dropbox.com/scl/fi/9h4zneet703n2zmz2ndh8/WTA2_1_fastqc-1.html?rlkey=954we5578wmit1ganxf5a49gj&st=m9u4tygp&dl=0) ...
 [Reverse read](https://www.dropbox.com/scl/fi/rr2k5qlw67rpk8niwkgmb/WTA2_2_fastqc-1.html?rlkey=288ugauug8pjvu510f5zumrgs&st=yveofmbb&dl=0) .
 ### Preprocessing and Quality Control 
 All preprocessing and quality control was performed on SSH key of Google cloud grapes controller. Trimmomatic (version 0.39) was used to trim reads based on quality. 
 
 #### Trimmomatic
+Prior to any cleaning, FastQC was run on the initial files to determine the quality of data we were working with. It was determined that the quality of initial data was poor, as many attributes of the data were marked as areas of concern. 
+
 Trimmomatic script: [linked here](https://github.com/graceobrien2002/RNAseqProject/blob/main/scripts1/trimmomatic_run1) .
 
 We removed specific [adapters sequences](https://github.com/graceobrien2002/RNAseqProject/blob/main/scripts1/TruSeq3-PE_adapter_sequence) for Illumina. We used trimmomatic filters of:
@@ -48,7 +67,13 @@ Bowtie2 (version 2.5.3) was used on forward and reverse paired-end reads obtaine
 You can find a [master Google sheet](https://docs.google.com/spreadsheets/d/1fa-FXVMlCXOZkbHSx_mMg0OXLMy9BeBJg8uWrEMpKGo/edit?gid=0#gid=0) that shows the bowtie alignment results for all of the data files analyzed by fellow students. About 89% of data from the files were aligned concordantly exactly 1 time, while about 6% were aligned concordantly more than one time. The overall alignment rate was about 98% for all of the data files. 
 
 #### BAM File Processing 
-Once the .SAM file was generated from Bowtie2, it was converted into a binary format - .BAM file - and further processed using Samtools (version 1.17). These steps were necessary to ensure the file was ready for downstream analysis. The .SAM file was converted to a .BAM file using the command: Samtools view -S -b WTA2.sam > WTA2.bam on the HPC terminal. The resulting .BAM file was sorted to arrange the genes by their genomic coordinates using the command: Samtools sort WTA2.bam -o sorted_reads.bam. An index file was created using the command: Samtools index sample.srt.bam. 
+Once the .SAM file was generated from Bowtie2, it was converted into a binary format - .BAM file - and further processed using Samtools (version 1.17). These steps were necessary to ensure the file was ready for downstream analysis. 
+####
+The .SAM file was converted to a .BAM file using the command:
+Samtools view -S -b WTA2.sam > WTA2.bam on the HPC terminal
+####
+The resulting .BAM file was sorted to arrange the genes by their genomic coordinates using the command:
+Samtools sort WTA2.bam -o sorted_reads.bam. An index file was created using the command: Samtools index sample.srt.bam. 
 
 ### Counting Reads per Gene Model using HTSeq
 A conda environment was set up using the following code: $ module load anaconda3
