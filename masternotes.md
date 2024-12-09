@@ -62,5 +62,12 @@ Using DESeq2 (Version 3.20) differential expression analysis was performed using
 ### Gene Ontology enrichment analysis
 The names and numerical IDs of significant genes were obtained from the GTF file using the command: grep -wFf signif_geneIDs GCF_000182965.3_ASM18296v3_genomic.gtf | grep "protein_coding" | cut -f9 | cut -d ";" -f1,3,5 > signif_gene_annot_info. Using the gene names or numerical ID's, research was conducted from the [_C. Albicans_ genome database](http://www.candidagenome.org/), [UniProt](https://www.uniprot.org/), and [NCBI Datasets](https://www.ncbi.nlm.nih.gov/datasets/taxonomy/5476/) to determine the biological function and significance of these genes and their involvement in thiamine starvation. Annotations were put into the [google sheet](https://docs.google.com/spreadsheets/d/1NIFbaL8KOtdYOHXUA1CmjdkcB021oKFD6jgzvrTFf4I/edit?gid=116329557#gid=116329557) with the 13 significant genes - these genes were deemed significant as they experienced increased expression in an environment lacking thiamine. While 13 genes were significant, 4 were uncharacterized, so databases may lack information about the function of these genes. 
 
-# Biological analysis of data
+![PCA plot](https://github.com/graceobrien2002/RNAseqProject/blob/main/outputs/TH-vTH+_pcaplot.png?raw=true)
+Figure 1. PCA Plot for significant differentially expressed genes in the absence of Thiamine. The x-axis PC1 shows the largest proportion of variance in the dataset, while the y-axis PC2 captures the second-largest proportion of variance in the dataset. The blue dots represent the THI+ (thymine present in growth media) samples, which are clustered in the top right quadrant. The red dots represent the THI- (thymine absent in growth media) which are clustered in the bottom left quadrant. 
 
+Figure 2. 
+
+# Biological analysis of data
+## PCA Plot
+
+The x-axis PC1 captures the largest proportion of variance in the data, which is 88%, while PC2 (y-axis) captures the second largest proportion of variance which is 9%. Each sample is represented by a blue dot (THI+) or a red dot (THI-). The THI+ samples are clustered tightly in the top right quadrant which indicates high similarity in gene expression profiles across replicates under the presence of thiamine. The THI- samples are clustered tightly in the bottom left quadrant, which suggests distinct gene expression patterns in the absence of thiamine. The expression of the genes in this plot are likely very sensitive to the presence/absence of thiamine. 
